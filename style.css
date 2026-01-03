@@ -509,6 +509,17 @@ code {
   .main-content {
     width: calc(100% - 220px); /* 사이드바 제외 나머지 꽉 채우기 */
   }
+  .js-toc-mobile .toc-link,
+  .js-toc-mobile .is-active-link,
+  body.is-top .js-toc-mobile .toc-link {
+    border-left: none !important;
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+  }
+  .js-toc-mobile .toc-list {
+    padding-left: 0 !important;
+    border-left: none !important;
+  }
 }
 
 @media (max-width: 768px) {
