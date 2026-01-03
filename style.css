@@ -1,12 +1,12 @@
 @charset "utf-8";
 
 :root {
-  --primary: #86ce27;
+  --primary: #1593e7;
   --bg: #ffffff;
   --text: #333333;
   --border: #eeeeee;
   --gray: #888888;
-  --code: #008000;
+  --code: #003c80;
 }
 
 body.dark-mode {
@@ -34,6 +34,63 @@ a {
   color: inherit;
 }
 
+blockquote {
+  padding: 34px 0 !important;
+}
+
+#back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 45px;
+  height: 45px;
+  background-color: #ffffff;
+  color: #333;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0; /* 기본 상태: 숨김 */
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 스크롤이 내려갔을 때 보여줄 클래스 */
+#back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+#back-to-top:hover {
+  transform: translateY(-5px); /* 호버 시 살짝 올라가는 효과 */
+}
+
+/* 게시물 날짜 */
+.index-date.detail {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* 게시물 카테고리명 */
+.post-category {
+  margin-bottom: 10px; /* 제목과의 간격 */
+}
+
+.post-category a {
+  font-size: 0.9rem;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.post-category a:hover {
+  text-decoration: underline;
+}
+
 /* 헤더 및 로고 */
 #header {
   position: sticky;
@@ -50,7 +107,7 @@ body.dark-mode #header {
 }
 
 .header-inner {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   height: 100%;
   display: flex;
@@ -79,10 +136,10 @@ body.dark-mode #header {
 /* 레이아웃 */
 .container {
   display: flex;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 70px 20px 40px;
-  gap: 30px;
+  gap: 50px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -206,6 +263,10 @@ body.dark-mode #header {
   padding-bottom: 20px;
   align-items: center;
 }
+.index-item:hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.7;
+}
 .index-item:first-child {
   margin-top: 10px;
 }
@@ -284,6 +345,11 @@ body.dark-mode .index-date {
   display: list-item !important;
 }
 
+.contents_style a {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
 /* 코드블록 테마 강제 (티스토리 기본 스타일 덮어쓰기) */
 pre {
   background: #282c34 !important;
@@ -332,6 +398,39 @@ body.view-post .side-right {
   opacity: 1;
 }
 
+/* 페이지네이션 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  gap: 15px;
+}
+
+.pagination a {
+  text-decoration: none;
+  color: var(--text-color, #333); /* 변수 사용 시 */
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.pagination .page-num {
+  font-size: 0.9rem;
+}
+
+/* 현재 선택된 페이지 스타일 (티스토리 자동 생성 클래스) */
+.pagination .selected {
+  font-weight: bold;
+  color: var(--primary); /* 강조 색상 */
+  text-decoration: underline;
+}
+
+/* 더 이상 페이지가 없을 때 숨김 처리 */
+.pagination .no-more {
+  display: none;
+}
+
 footer {
   width: 100%;
   padding: 40px;
@@ -362,8 +461,7 @@ footer {
 .theme-transition *:before,
 .theme-transition *:after {
   transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
@@ -386,7 +484,6 @@ footer {
   display: inline-block; /* 애니메이션을 위해 인라인 블록화 */
 }
 
-.index-title a:hover,
 .category-area ul li a:hover {
   color: var(--primary) !important;
   transform: translateX(5px); /* 오른쪽으로 살짝 이동 */

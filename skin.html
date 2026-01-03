@@ -42,7 +42,6 @@
             </a>
             <div class="profile-name">[##_blogger_##]</div>
           </div>
-          <nav class="category-area">[##_category_list_##]</nav>
           <div class="search-area">
             <s_search>
               <div class="search-box">
@@ -83,36 +82,42 @@
               </div>
             </s_search>
           </div>
+          <nav class="category-area">[##_category_list_##]</nav>
         </aside>
 
         <main class="main-content">
           <s_article_rep>
             <s_index_article_rep>
-              <section class="index-item">
-                <s_article_rep_thumbnail>
-                  <div class="index-thumb">
-                    <a href="[##_article_rep_link_##]"
-                      ><img
+              <a href="[##_article_rep_link_##]">
+                <section class="index-item">
+                  <s_article_rep_thumbnail>
+                    <div class="index-thumb">
+                      <img
                         src="[##_article_rep_thumbnail_url_##]"
                         alt="썸네일"
-                    /></a>
-                  </div>
-                </s_article_rep_thumbnail>
-                <div class="index-text">
-                  <h2 class="index-title">
-                    <a href="[##_article_rep_link_##]"
-                      >[##_article_rep_title_##]</a
-                    >
-                  </h2>
-                  <p class="index-summary">[##_article_rep_summary_##]</p>
-                  <span class="index-date">[##_article_rep_date_##]</span>
-                </div>
-              </section>
+                      />
+                    </div>
+                  </s_article_rep_thumbnail>
+                  
+                    <div class="index-text">
+                      <h2 class="index-title">
+                        [##_article_rep_title_##]
+                      </h2>
+                      <p class="index-summary">[##_article_rep_summary_##]</p>
+                      <span class="index-date">[##_article_rep_date_##]</span>
+                    </div>
+                </section>
+              </a>
             </s_index_article_rep>
 
             <s_permalink_article_rep>
               <article class="post-detail">
+                <div class="post-category">
+                  <a href="[##_article_rep_category_link_##]">[##_article_rep_category_##]</a>
+                </div>
+
                 <h1 class="post-title">[##_article_rep_title_##]</h1>
+                <p class="index-date detail">[##_article_rep_date_##]</span>
 
                 <div class="mobile-toc-container mobile-only">
                   <div class="js-toc-mobile"></div>
@@ -123,6 +128,17 @@
               </article>
             </s_permalink_article_rep>
           </s_article_rep>
+          <s_paging>
+            <div class="pagination">
+              <a [##_prev_page_##] class="prev [##_no_more_prev_##]">이전</a>
+              <div class="page-numbers">
+                <s_paging_rep>
+                  <a [##_paging_rep_link_##] class="page-num">[##_paging_rep_link_num_##]</a>
+                </s_paging_rep>
+              </div>
+              <a [##_next_page_##] class="next [##_no_more_next_##]">다음</a>
+            </div>
+          </s_paging>
         </main>
 
         <aside class="side-right">
@@ -136,6 +152,11 @@
           © 2026 <strong>[##_blogger_##]</strong>. All rights reserved.
         </p>
       </footer>
+      <button id="back-to-top" type="button" aria-label="맨 위로 이동">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
 
       <script>
         window.addEventListener("load", function () {
@@ -295,6 +316,27 @@
             );
           });
         };
+
+        // 맨 위로 버튼
+        const topBtn = document.getElementById("back-to-top");
+        window.addEventListener("scroll", function () {
+          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+          // 기존 스킨에 있던 300px 체크 로직 활용
+          if (scrollTop > 300) {
+            topBtn.classList.add("show");
+          } else {
+            topBtn.classList.remove("show");
+          }
+        }, { passive: true });
+
+        // 버튼 클릭 시 상단으로 부드럽게 이동
+        topBtn.addEventListener("click", () => {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+          });
+        });
       </script>
     </s_t3>
   </body>
