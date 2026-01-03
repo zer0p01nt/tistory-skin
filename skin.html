@@ -144,6 +144,7 @@
 
           if (isPost && postContent) {
             const headings = postContent.querySelectorAll("h1, h2, h3");
+            const isDesktop = window.innerWidth > 1024;
 
             // 제목이 있을 때만 목차 기능 실행 및 박스 노출
             if (headings.length > 0) {
@@ -154,12 +155,14 @@
                 }
               });
 
-              const isDesktop = window.innerWidth > 1024;
-              if (isDesktop) document.body.classList.add("view-post");
-
-              // 모바일 목차 컨테이너 표시
-              const mobileToc = document.querySelector(".mobile-toc-container");
-              if (mobileToc) mobileToc.style.display = "block";
+              if (isDesktop) {
+                document.body.classList.add("view-post");
+              } else {
+                const mobileToc = document.querySelector(
+                  ".mobile-toc-container"
+                );
+                if (mobileToc) mobileToc.style.display = "block";
+              }
 
               // 목차 초기화
               tocbot.init({
