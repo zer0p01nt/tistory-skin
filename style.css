@@ -435,17 +435,6 @@ footer {
   margin-left: 10px !important;
 }
 
-.is-active-link {
-  border-left-color: var(--primary) !important;
-}
-
-/* 마우스 올렸을 때 & 현재 읽고 있는 위치 하이라이트 */
-.toc-link:hover,
-.is-active-link {
-  color: var(--primary) !important;
-  font-weight: 600 !important;
-}
-
 /* Tocbot 기본 불렛 제거 */
 .toc-list-item::before {
   display: none !important;
@@ -480,6 +469,18 @@ body.is-top .toc-list-item:first-child > .toc-link {
   border-left-color: var(--primary) !important;
 }
 
+/* is-top보다 우선순위로 둠 */
+.is-active-link {
+  border-left-color: var(--primary) !important;
+}
+
+/* 마우스 올렸을 때 & 현재 읽고 있는 위치 하이라이트 */
+.toc-link:hover,
+.is-active-link {
+  color: var(--primary) !important;
+  font-weight: 600 !important;
+}
+
 .mobile-only {
   display: none;
 }
@@ -496,19 +497,36 @@ code {
   display: inline-block;
 }
 
+body.dark-mode .cs-info-wrap {
+  background: #ffffff;
+}
+
 /* 반응형 레이아웃 설정 */
+@media (min-width: 1025px) {
+  .mobile-toc-container {
+    display: none !important;
+  }
+
+  .toc-box {
+    display: block !important;
+  }
+}
+
 @media (max-width: 1024px) {
   .container {
     gap: 20px;
     padding: 20px;
     flex-wrap: wrap; /* 요소가 넘치면 아래로 내림 */
   }
+
   .side-right {
     display: none !important; /* 태블릿/모바일 목차 완전 제거 */
   }
+
   .main-content {
     width: calc(100% - 220px); /* 사이드바 제외 나머지 꽉 채우기 */
   }
+
   .js-toc-mobile .toc-link,
   .js-toc-mobile .is-active-link,
   body.is-top .js-toc-mobile .toc-link {
@@ -516,9 +534,22 @@ code {
     padding-left: 0 !important;
     margin-left: 0 !important;
   }
+
   .js-toc-mobile .toc-list {
     padding-left: 0 !important;
     border-left: none !important;
+  }
+
+  body.has-toc .mobile-toc-container {
+    display: block !important;
+  }
+
+  .toc-box {
+    display: none !important;
+  }
+
+  .side-right {
+    visibility: hidden !important;
   }
 }
 
@@ -628,5 +659,13 @@ code {
   body.is-top .js-toc-mobile .toc-link {
     border-left: none !important;
     padding-left: 0 !important;
+  }
+
+  .mobile-toc-container.mobile-only {
+    display: none !important; /* 일단 숨김 */
+  }
+
+  body.has-toc .mobile-toc-container.mobile-only {
+    display: block !important; /* 제목이 있을 때만 다시 띄움 */
   }
 }

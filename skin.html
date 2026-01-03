@@ -141,49 +141,67 @@
         window.addEventListener("load", function () {
           const postContent = document.querySelector(".js-toc-content");
           const isPost = document.querySelector(".post-detail");
+          const mobileTocContainer = document.querySelector(
+            ".mobile-toc-container"
+          );
 
           if (isPost && postContent) {
             const headings = postContent.querySelectorAll("h1, h2, h3");
-            const isDesktop = window.innerWidth > 1024;
 
-            // 제목이 있을 때만 목차 기능 실행 및 박스 노출
+            // 제목이 있는 포스팅일 경우에만 목차 로직 가동
             if (headings.length > 0) {
-              // 제목들에 ID 부여
+              // 제목 태그에 ID 부여
               headings.forEach((heading, index) => {
-                if (!heading.id) {
-                  heading.id = "toc-header-" + index;
-                }
+                if (!heading.id) heading.id = "toc-header-" + index;
               });
 
-              if (isDesktop) {
-                document.body.classList.add("view-post");
-              } else {
-                const mobileToc = document.querySelector(
-                  ".mobile-toc-container"
-                );
-                if (mobileToc) mobileToc.style.display = "block";
+              // 제목이 있는 글임을 표시
+              document.body.classList.add("has-toc");
+
+              // 목차 초기화 및 레이아웃 스위칭 함수
+              function initToc() {
+                const isDesktop = window.innerWidth > 1024;
+
+                // 레이아웃 클래스 토글
+                document.body.classList.toggle("view-post", isDesktop);
+                document.body.classList.toggle("is-mobile-view", !isDesktop);
+                tocbot.init({
+                  tocSelector: isDesktop ? ".js-toc" : ".js-toc-mobile",
+                  contentSelector: ".js-toc-content",
+                  headingSelector: "h1, h2, h3",
+                  hasInnerContainers: true,
+                  scrollSmooth: true,
+                  scrollSmoothOffset: -80,
+                  headingsOffset: 120,
+                  collapseDepth: 6,
+                });
               }
 
-              // 목차 초기화
-              tocbot.init({
-                tocSelector: isDesktop ? ".js-toc" : ".js-toc-mobile",
-                contentSelector: ".js-toc-content",
-                headingSelector: "h1, h2, h3",
-                hasInnerContainers: true,
-                scrollSmooth: true,
-                scrollSmoothOffset: -80,
-                headingsOffset: 120,
-                collapseDepth: 6,
-                includeHtml: true,
+              // 초기 로드 시 실행
+              initToc();
+
+              // 리사이즈 시 1024px 경계선을 넘을 때만 즉시 재설정
+              let lastWidth = window.innerWidth;
+              window.addEventListener("resize", function () {
+                const currentWidth = window.innerWidth;
+                if (
+                  (lastWidth > 1024 && currentWidth <= 1024) ||
+                  (lastWidth <= 1024 && currentWidth > 1024)
+                ) {
+                  initToc();
+                }
+                lastWidth = currentWidth;
               });
-            } else {
-              // 제목이 없으면 목차 레이아웃 클래스 제거 (우측 여백 방지)
-              document.body.classList.remove("view-post");
-              const mobileToc = document.querySelector(".mobile-toc-container");
-              if (mobileToc) mobileToc.style.display = "none";
+            }
+            // 제목이 없는 포스팅일 경우 레이아웃 정리 및 목차 숨김
+            else {
+              document.body.classList.remove(
+                "has-toc",
+                "view-post",
+                "is-mobile-view"
+              );
             }
           }
-
           // 코드블록 하이라이트
           document.querySelectorAll("pre code").forEach((block) => {
             block.className = "";
