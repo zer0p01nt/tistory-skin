@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skin>
+    <information>
+        <name>zer0p01nt Skin</name>
+        <version>1.0</version>
+    </information>
+    <author>
+        <name>zer0p01nt</name>
+        <homepage>https://zer0point.tistory.com/</homepage>
+    </author>
+    <default>
+        <recentEntries>10</recentEntries>
+        <recentComments>5</recentComments>
+    </default>
+</skin>

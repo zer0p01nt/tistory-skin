@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>[##_page_title_##]</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css"
+    />
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"
+    />
+  </head>
+  <body id="[##_body_id_##]">
+    <s_t3>
+      <header id="header">
+        <div class="header-inner">
+          <button id="dark-mode-toggle" type="button">🌙</button>
+          <a href="[##_blog_link_##]" class="header-main-link"></a>
+          <button id="menu-trigger" class="mobile-only">🍀</button>
+        </div>
+      </header>
+
+      <div class="container">
+        <aside class="side-left">
+          <div class="profile-area">
+            <a href="[##_blog_link_##]">
+              <div class="profile-img">
+                <img src="[##_image_##]" alt="프로필" />
+              </div>
+            </a>
+            <div class="profile-name">[##_blogger_##]</div>
+          </div>
+          <nav class="category-area">[##_category_list_##]</nav>
+          <div class="search-area">
+            <s_search>
+              <div class="search-box">
+                <input
+                  type="text"
+                  name="[##_search_name_##]"
+                  value="[##_search_text_##]"
+                  onkeypress="if(event.keyCode == 13){ [##_search_onclick_submit_##] }"
+                />
+                <button
+                  type="submit"
+                  onclick="[##_search_onclick_submit_##]"
+                  aria-label="검색"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M21 21L16.65 16.65"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </s_search>
+          </div>
+        </aside>
+
+        <main class="main-content">
+          <s_article_rep>
+            <s_index_article_rep>
+              <section class="index-item">
+                <s_article_rep_thumbnail>
+                  <div class="index-thumb">
+                    <a href="[##_article_rep_link_##]"
+                      ><img
+                        src="[##_article_rep_thumbnail_url_##]"
+                        alt="썸네일"
+                    /></a>
+                  </div>
+                </s_article_rep_thumbnail>
+                <div class="index-text">
+                  <h2 class="index-title">
+                    <a href="[##_article_rep_link_##]"
+                      >[##_article_rep_title_##]</a
+                    >
+                  </h2>
+                  <p class="index-summary">[##_article_rep_summary_##]</p>
+                  <span class="index-date">[##_article_rep_date_##]</span>
+                </div>
+              </section>
+            </s_index_article_rep>
+
+            <s_permalink_article_rep>
+              <article class="post-detail">
+                <h1 class="post-title">[##_article_rep_title_##]</h1>
+
+                <div class="mobile-toc-container mobile-only">
+                  <div class="js-toc-mobile"></div>
+                </div>
+                <div class="post-content js-toc-content">
+                  [##_article_rep_desc_##]
+                </div>
+              </article>
+            </s_permalink_article_rep>
+          </s_article_rep>
+        </main>
+
+        <aside class="side-right">
+          <div class="toc-box">
+            <div class="js-toc"></div>
+          </div>
+        </aside>
+      </div>
+      <footer>
+        <p class="copyright">
+          © 2026 <strong>[##_blogger_##]</strong>. All rights reserved.
+        </p>
+      </footer>
+
+      <script>
+        window.addEventListener("load", function () {
+          const postContent = document.querySelector(".js-toc-content");
+          const isPost = document.querySelector(".post-detail");
+
+          if (isPost && postContent) {
+            const headings = postContent.querySelectorAll("h1, h2, h3, h4");
+            headings.forEach((heading, index) => {
+              if (!heading.id) {
+                heading.id = "toc-id-" + index;
+              }
+            });
+
+            // PC/모바일 분기 및 목차 초기화
+            const isDesktop = window.innerWidth > 1024;
+            if (isDesktop) {
+              document.body.classList.add("view-post");
+            }
+
+            tocbot.init({
+              tocSelector: isDesktop ? ".js-toc" : ".js-toc-mobile",
+              contentSelector: ".js-toc-content",
+              headingSelector: "h1, h2, h3",
+              hasInnerContainers: true,
+              scrollSmooth: true,
+              scrollSmoothOffset: -80,
+              includeHtml: true,
+              collapseDepth: 6,
+              fixedSidebarOffset: "auto",
+              headingsOffset: 150,
+              linkClass: "toc-link",
+              activeLinkClass: "is-active-link",
+              listClass: "toc-list",
+              listItemClass: "toc-list-item",
+            });
+          }
+
+          // 코드블록 하이라이트
+          document.querySelectorAll("pre code").forEach((block) => {
+            block.className = "";
+            hljs.highlightElement(block);
+          });
+        });
+
+        // 최상단 체크 스크립트
+        window.addEventListener(
+          "scroll",
+          function () {
+            const scrollTop =
+              window.pageYOffset || document.documentElement.scrollTop;
+
+            // 스크롤이 300px 미만이면 body에 is-top 클래스 추가
+            if (scrollTop < 300) {
+              document.body.classList.add("is-top");
+            } else {
+              document.body.classList.remove("is-top");
+            }
+          },
+          { passive: true }
+        );
+
+        // 페이지 로드 시에도 한 번 체크
+        if ((window.pageYOffset || document.documentElement.scrollTop) < 300) {
+          document.body.classList.add("is-top");
+        }
+
+        // 페이지 로드 시 테마 상태 확인
+        const btn = document.getElementById("dark-mode-toggle");
+        const currentTheme = localStorage.getItem("theme");
+
+        // 초기 테마 설정 (애니메이션 없이 즉시 적용)
+        if (currentTheme === "dark") {
+          document.body.classList.add("dark-mode");
+          btn.innerText = "☀️";
+        }
+
+        // 다크모드 토글 버튼 클릭 시
+        btn.addEventListener("click", () => {
+          // 애니메이션 클래스 추가
+          document.documentElement.classList.add("theme-transition");
+
+          // 일관된 애니메이션으로 테마 전환
+          window.requestAnimationFrame(() => {
+            document.body.classList.toggle("dark-mode");
+
+            let theme = "light";
+            if (document.body.classList.contains("dark-mode")) {
+              theme = "dark";
+              btn.innerText = "☀️";
+            } else {
+              btn.innerText = "🌙";
+            }
+            localStorage.setItem("theme", theme);
+          });
+
+          // 애니메이션 완료 후 클래스 제거
+          setTimeout(() => {
+            document.documentElement.classList.remove("theme-transition");
+          }, 450); // CSS 400ms보다 살짝 여유있게
+        });
+
+        // 햄버거 메뉴 토글 로직
+        const menuTrigger = document.getElementById("menu-trigger");
+        const sideLeft = document.querySelector(".side-left");
+        const overlay = document.createElement("div");
+        overlay.className = "menu-overlay";
+        document.body.appendChild(overlay);
+
+        menuTrigger.addEventListener("click", () => {
+          sideLeft.classList.add("active");
+          overlay.classList.add("active");
+        });
+
+        overlay.addEventListener("click", () => {
+          sideLeft.classList.remove("active");
+          overlay.classList.remove("active");
+        });
+
+        // 인라인 코드블럭 백틱 설정
+        window.onload = () => {
+          let textNodes = document.querySelectorAll(
+            "div.tt_article_useless_p_margin.contents_style > *:not(figure):not(pre)"
+          );
+          textNodes.forEach((node) => {
+            node.innerHTML = node.innerHTML.replace(
+              /`(.*?)`/g,
+              `<code class='notion-code'>$1</code>`
+            );
+          });
+        };
+      </script>
+    </s_t3>
+  </body>
+</html>
