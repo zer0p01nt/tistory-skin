@@ -191,6 +191,12 @@ body.dark-mode #header {
   display: block;
 }
 
+.main-content {
+  flex: 1;
+  min-width: 0;
+  max-width: 1000px;
+}
+
 /* 목록 및 썸네일 */
 .index-item {
   display: flex;
@@ -299,6 +305,12 @@ pre code {
   font-size: 0.95rem !important;
   white-space: pre !important;
   display: block;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+pre code::-webkit-scrollbar {
+  display: none !important;
 }
 
 /* 우측 목차 */
@@ -310,11 +322,13 @@ pre code {
   opacity: 0;
   transition: opacity 0.3s;
   position: sticky;
+  display: none;
 }
 
 /* 상세페이지에서만 보이게 처리 */
 body.view-post .side-right {
   visibility: visible;
+  display: block;
   opacity: 1;
 }
 
@@ -354,10 +368,6 @@ footer {
 }
 
 @media (max-width: 1000px) {
-  .side-right {
-    display: none;
-  }
-
   .index-item {
     flex-direction: column;
     align-items: flex-start;
