@@ -143,35 +143,42 @@
           const isPost = document.querySelector(".post-detail");
 
           if (isPost && postContent) {
-            const headings = postContent.querySelectorAll("h1, h2, h3, h4");
-            headings.forEach((heading, index) => {
-              if (!heading.id) {
-                heading.id = "toc-id-" + index;
-              }
-            });
+            const headings = postContent.querySelectorAll("h1, h2, h3");
 
-            // PC/모바일 분기 및 목차 초기화
-            const isDesktop = window.innerWidth > 1024;
-            if (isDesktop) {
-              document.body.classList.add("view-post");
+            // 제목이 있을 때만 목차 기능 실행 및 박스 노출
+            if (headings.length > 0) {
+              // 제목들에 ID 부여
+              headings.forEach((heading, index) => {
+                if (!heading.id) {
+                  heading.id = "toc-header-" + index;
+                }
+              });
+
+              const isDesktop = window.innerWidth > 1024;
+              if (isDesktop) document.body.classList.add("view-post");
+
+              // 모바일 목차 컨테이너 표시
+              const mobileToc = document.querySelector(".mobile-toc-container");
+              if (mobileToc) mobileToc.style.display = "block";
+
+              // 목차 초기화
+              tocbot.init({
+                tocSelector: isDesktop ? ".js-toc" : ".js-toc-mobile",
+                contentSelector: ".js-toc-content",
+                headingSelector: "h1, h2, h3",
+                hasInnerContainers: true,
+                scrollSmooth: true,
+                scrollSmoothOffset: -80,
+                headingsOffset: 120,
+                collapseDepth: 6,
+                includeHtml: true,
+              });
+            } else {
+              // 제목이 없으면 목차 레이아웃 클래스 제거 (우측 여백 방지)
+              document.body.classList.remove("view-post");
+              const mobileToc = document.querySelector(".mobile-toc-container");
+              if (mobileToc) mobileToc.style.display = "none";
             }
-
-            tocbot.init({
-              tocSelector: isDesktop ? ".js-toc" : ".js-toc-mobile",
-              contentSelector: ".js-toc-content",
-              headingSelector: "h1, h2, h3",
-              hasInnerContainers: true,
-              scrollSmooth: true,
-              scrollSmoothOffset: -80,
-              includeHtml: true,
-              collapseDepth: 6,
-              fixedSidebarOffset: "auto",
-              headingsOffset: 150,
-              linkClass: "toc-link",
-              activeLinkClass: "is-active-link",
-              listClass: "toc-list",
-              listItemClass: "toc-list-item",
-            });
           }
 
           // 코드블록 하이라이트

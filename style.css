@@ -453,6 +453,7 @@ footer {
 
 /* 모바일 목차 상자 디자인 */
 .mobile-toc-container {
+  display: none; /* JS에서 제목이 확인될 때만 block으로 변경됨 */
   border: 1px solid var(--border);
   background: var(--bg);
   padding: 15px;
