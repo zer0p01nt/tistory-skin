@@ -622,6 +622,7 @@ body.dark-mode .another_category_color_gray h4 a {
 .no-scroll {
   overflow: hidden;
   touch-action: none;
+  height: 100%;
 }
 
 /* 반응형 레이아웃 설정 */
@@ -682,12 +683,6 @@ body.dark-mode .another_category_color_gray h4 a {
     padding: 15px;
     width: 100%;
   }
-  .side-left {
-    width: 100% !important;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 20px;
-    margin-bottom: 20px;
-  }
   .main-content {
     width: 100% !important;
   }
@@ -736,6 +731,10 @@ body.dark-mode .another_category_color_gray h4 a {
 
   /* 사이드바를 모바일에서는 슬라이드 메뉴로 변경 */
   .side-left {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+
     position: fixed;
     top: 0;
     left: 0;
@@ -748,9 +747,12 @@ body.dark-mode .another_category_color_gray h4 a {
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border-right: 1px solid var(--border);
     box-shadow: none; /* 숨겨져 있을 땐 그림자 제거 */
-    overflow-y: scroll;
     scrollbar-width: none;
     -ms-overflow-style: none;
+
+    overflow-y: auto !important; /* 내용이 많을 때만 내부 스크롤 생성 */
+    touch-action: pan-y; /* 내부에서 세로 스크롤 허용 */
+    -webkit-overflow-scrolling: touch; /* iOS 부드러운 스크롤 */
   }
   .side-left::-webkit-scrollbar {
     display: none !important;
