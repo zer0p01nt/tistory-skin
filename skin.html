@@ -297,11 +297,13 @@
         menuTrigger.addEventListener("click", () => {
           sideLeft.classList.add("active");
           overlay.classList.add("active");
+          overlay.classList.add("no-scroll");
         });
 
         overlay.addEventListener("click", () => {
           sideLeft.classList.remove("active");
           overlay.classList.remove("active");
+          overlay.classList.remove("no-scroll");
         });
 
         // 인라인 코드블럭 백틱 설정

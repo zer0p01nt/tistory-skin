@@ -619,6 +619,11 @@ body.dark-mode .another_category_color_gray h4 a {
   color: var(--text) !important;
 }
 
+.no-scroll {
+  overflow: hidden;
+  touch-action: none;
+}
+
 /* 반응형 레이아웃 설정 */
 @media (min-width: 1025px) {
   .mobile-toc-container {
