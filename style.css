@@ -1,12 +1,12 @@
 @charset "utf-8";
 
 :root {
-  --primary: #1593e7;
+  --primary: #86ce27;
   --bg: #ffffff;
   --text: #333333;
   --border: #eeeeee;
   --gray: #888888;
-  --code: #003c80;
+  --code: #008000;
 }
 
 body.dark-mode {
