@@ -409,7 +409,7 @@ body.view-post .side-right {
 
 .pagination a {
   text-decoration: none;
-  color: var(--text-color, #333); /* 변수 사용 시 */
+  color: var(--gray);
   padding: 5px 10px;
   border-radius: 4px;
   transition: background 0.2s;
