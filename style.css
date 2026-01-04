@@ -733,6 +733,12 @@ body.dark-mode .cs-info-wrap {
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border-right: 1px solid var(--border);
     box-shadow: none; /* 숨겨져 있을 땐 그림자 제거 */
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .side-left::-webkit-scrollbar {
+    display: none !important;
   }
   .side-left.active {
     transform: translateX(0);
