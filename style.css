@@ -609,6 +609,16 @@ body.dark-mode .cs-info-wrap {
   background: #ffffff;
 }
 
+body.dark-mode .another_category,
+body.dark-mode .another_category_color_gray * {
+  color: #cbcbcb !important;
+}
+
+body.dark-mode .another_category_color_gray h4,
+body.dark-mode .another_category_color_gray h4 a {
+  color: var(--text) !important;
+}
+
 /* 반응형 레이아웃 설정 */
 @media (min-width: 1025px) {
   .mobile-toc-container {
