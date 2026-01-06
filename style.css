@@ -589,6 +589,41 @@ body.is-top .toc-list-item:first-child > .toc-link {
   font-weight: 600 !important;
 }
 
+/* 태그 영역 */
+.post-tags {
+  padding-top: 20px;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  color: var(--gray) !important;
+}
+
+.tag-list a {
+  display: inline-block;
+  padding: 5px 0;
+  color: var(--gray);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.tag-list a::before {
+  content: "#"; /* 태그 앞에 해시 기호 자동 붙이기 */
+  margin-right: 2px;
+}
+
+.tag-list a:hover {
+  color: var(--primary) !important;
+  transform: translateY(-2px);
+}
+
+body.dark-mode .tag-list a {
+  color: #aaa;
+}
+
 .mobile-only {
   display: none;
 }
