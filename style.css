@@ -660,6 +660,10 @@ body.dark-mode .another_category_color_gray h4 a {
   height: 100%;
 }
 
+blockquote {
+  padding: 34px 15px !important;
+}
+
 /* 반응형 레이아웃 설정 */
 @media (min-width: 1025px) {
   .mobile-toc-container {
