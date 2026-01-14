@@ -237,7 +237,7 @@ body.dark-mode #header {
   padding: 0;
   margin-left: 8px;
   color: var(--gray);
-  transition: color 0.2s ease;
+  transition: color 0.3s ease;
 }
 
 .search-box button:hover {
@@ -264,7 +264,7 @@ body.dark-mode #header {
   align-items: center;
 }
 .index-item:hover {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s ease;
   opacity: 0.7;
 }
 .index-item:first-child {
@@ -386,7 +386,7 @@ pre code::-webkit-scrollbar {
   flex-shrink: 0;
   visibility: hidden; /* 기본적으로 안 보임 */
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity 0.3s ease;
   position: sticky;
   display: none;
 }
@@ -412,7 +412,7 @@ body.view-post .side-right {
   color: var(--gray);
   padding: 5px 10px;
   border-radius: 4px;
-  transition: background 0.2s;
+  transition: background 0.3s ease;
 }
 
 .pagination .page-num {
@@ -460,10 +460,8 @@ footer {
 .theme-transition *,
 .theme-transition *:before,
 .theme-transition *:after {
-  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease, box-shadow 0.3s ease !important;
 }
 
 @media (max-width: 1000px) {
@@ -481,7 +479,7 @@ footer {
 /* 마우스 호버 애니메이션 (게시글 제목 & 카테고리) */
 .index-title a,
 .category-area ul li a {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s ease;
   display: inline-block; /* 애니메이션을 위해 인라인 블록화 */
 }
 
@@ -522,7 +520,7 @@ footer {
   display: inline-flex !important; /* 텍스트 너비만큼만 영역 잡기 */
   color: var(--gray) !important;
   font-size: 0.85rem;
-  transition: all 0.2s;
+  transition: all 0.3s ease;
   border-left: 2px solid transparent !important;
   padding: 2px 15px !important;
   line-height: 1 !important;
@@ -727,7 +725,7 @@ blockquote {
 
 .comment-actions a {
   color: var(--gray);
-  transition: color 0.2s;
+  transition: color 0.3s ease;
   white-space: nowrap;
 }
 
@@ -798,7 +796,7 @@ blockquote {
   border-radius: 4px;
   cursor: pointer;
   font-weight: 600;
-  transition: opacity 0.2s;
+  transition: opacity 0.3s ease;
   font-size: 0.9rem;
   font-family: "Pretendard Variable", Pretendard, -apple-system, sans-serif;
 }
@@ -943,7 +941,7 @@ blockquote {
     z-index: 1000;
     padding: 40px 20px !important;
     transform: translateX(-100%);
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.3s ease;
     border-right: 1px solid var(--border);
     box-shadow: none; /* 숨겨져 있을 땐 그림자 제거 */
     scrollbar-width: none;
