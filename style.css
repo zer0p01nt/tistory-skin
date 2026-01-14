@@ -757,10 +757,6 @@ blockquote {
   border-radius: 8px;
 }
 
-body.dark-mode .comment-form {
-  background: rgba(255, 255, 255, 0.03);
-}
-
 .comment-guest-info {
   display: flex;
   gap: 10px;
@@ -792,7 +788,6 @@ body.dark-mode .comment-form {
 
 .comment-submit {
   text-align: right;
-  margin-top: 10px;
 }
 
 .comment-submit button {
@@ -815,6 +810,18 @@ body.dark-mode .comment-form {
 .tt_box_namecard,
 .tistoryProfileLayerTrigger {
   display: none !important;
+}
+
+.comment-secret {
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.comment-secret input {
+  font-size: 0.9rem;
+  accent-color: var(--primary);
 }
 
 /* 반응형 레이아웃 설정 */
