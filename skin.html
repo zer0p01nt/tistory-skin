@@ -152,10 +152,10 @@
                             <div class="comment-content">
                               [##_rp_rep_desc_##]
                             </div>
-
-                            <s_rp_reply_container>
+                    
+                            <s_rp2_container>
                               <ul class="reply-list">
-                                <s_rp_reply_rep>
+                                <s_rp2_rep>
                                   <li id="[##_rp_rep_id_##]" class="comment-item [##_rp_rep_class_##]">
                                     <div class="comment-info">
                                       <img src="[##_rp_rep_logo_##]" alt="프로필" class="comment-avatar" />
@@ -171,9 +171,9 @@
                                       [##_rp_rep_desc_##]
                                     </div>
                                   </li>
-                                </s_rp_reply_rep>
+                                </s_rp2_rep>
                               </ul>
-                            </s_rp_reply_container>
+                            </s_rp2_container>
                           </li>
                         </s_rp_rep>
                       </ul>
@@ -181,19 +181,18 @@
 
                     <s_rp_input_form>
                       <div class="comment-form">
-                        <s_rp_member>
-                          <s_rp_not_logged>
-                            <div class="comment-guest-info">
-                              <input type="text" name="[##_rp_input_name_##]" value="[##_rp_guest_name_##]" placeholder="이름" />
-                              <input type="password" name="[##_rp_input_password_##]" value="[##_rp_guest_password_##]" placeholder="비밀번호" />
-                            </div>
-                          </s_rp_not_logged>
-                        </s_rp_member>
                         <div class="comment-textarea">
                           <textarea name="[##_rp_input_comment_##]" placeholder="댓글 작성"></textarea>
                         </div>
-                        <div class="comment-submit">
-                          <button type="submit" onclick="[##_rp_onclick_submit_##]">등록</button>
+                    
+                        <div class="comment-submit-container" style="display: flex; align-items: center; justify-content: flex-end; gap: 10px; margin-top: 10px;">
+                          <label class="comment-secret">
+                            <input type="checkbox" name="[##_rp_input_is_secret_##]"> 비밀글
+                          </label>
+                          
+                          <div class="comment-submit">
+                            <button type="submit" onclick="[##_rp_onclick_submit_##]">등록</button>
+                          </div>
                         </div>
                       </div>
                     </s_rp_input_form>
