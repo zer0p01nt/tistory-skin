@@ -664,6 +664,159 @@ blockquote {
   padding: 34px 15px !important;
 }
 
+/* 댓글 영역 전체 */
+.post-comments {
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid var(--border);
+}
+
+.post-comments h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: var(--primary);
+}
+
+/* 댓글 리스트 */
+.comment-list,
+.reply-list {
+  list-style: none !important;
+  padding: 0 !important;
+}
+
+.comment-item {
+  padding: 20px 0;
+  /* border-bottom: 1px solid var(--border); */
+}
+
+.comment-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.comment-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+}
+
+.comment-meta {
+  flex-grow: 1;
+}
+
+.comment-name {
+  display: block;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.comment-date {
+  font-size: 0.75rem;
+  color: var(--gray);
+}
+
+.comment-actions {
+  font-size: 0.75rem;
+  display: flex;
+  gap: 10px;
+}
+
+.comment-actions a {
+  color: var(--gray);
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+
+.comment-actions a:hover {
+  color: var(--primary);
+}
+
+.comment-content {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text);
+  word-break: break-all;
+}
+
+/* 대댓글 스타일 */
+.reply-list {
+  margin-top: 15px;
+  padding-left: 40px !important;
+  border-left: 1px solid var(--border);
+  /* border-bottom: none !important; */
+}
+
+/* 댓글 입력 폼 */
+.comment-form {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+body.dark-mode .comment-form {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.comment-guest-info {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.comment-guest-info input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.comment-textarea textarea {
+  width: 100%;
+  height: 100px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  resize: none;
+  font-family: "Pretendard Variable", Pretendard, -apple-system, sans-serif;
+}
+
+.comment-submit {
+  text-align: right;
+  margin-top: 10px;
+}
+
+.comment-submit button {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 8px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: opacity 0.2s;
+  font-size: 0.9rem;
+  font-family: "Pretendard Variable", Pretendard, -apple-system, sans-serif;
+}
+
+.comment-submit button:hover {
+  opacity: 0.8;
+}
+
+.tt_box_namecard,
+.tistoryProfileLayerTrigger {
+  display: none !important;
+}
+
 /* 반응형 레이아웃 설정 */
 @media (min-width: 1025px) {
   .mobile-toc-container {
@@ -837,5 +990,12 @@ blockquote {
 
   body.has-toc .mobile-toc-container.mobile-only {
     display: block !important; /* 제목이 있을 때만 다시 띄움 */
+  }
+
+  .reply-list {
+    padding-left: 20px !important;
+  }
+  .comment-guest-info {
+    flex-direction: column;
   }
 }
