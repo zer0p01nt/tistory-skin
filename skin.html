@@ -380,7 +380,7 @@
         // 인라인 코드블럭 백틱 설정
         window.onload = () => {
           let textNodes = document.querySelectorAll(
-            "div.tt_article_useless_p_margin.contents_style > *:not(figure):not(pre)"
+            "div.contents_style > *:not(figure):not(pre)"
           );
           textNodes.forEach((node) => {
             node.innerHTML = node.innerHTML.replace(
