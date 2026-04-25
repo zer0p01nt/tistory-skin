@@ -661,7 +661,15 @@ body.dark-mode .another_category_color_gray h4 a {
 }
 
 blockquote {
-  padding: 34px 15px !important;
+  border-color: #d0d0d0 !important;
+  border-width: 0 0 0 4px !important;
+  border-style: solid !important;
+  padding: 1px 0 0 12px !important;
+  color: #666 !important;
+  line-height: 1.75 !important;
+  font-size: 1em !important;
+  text-align: left !important;
+  margin: 20px !important;
 }
 
 /* 댓글 영역 전체 */
