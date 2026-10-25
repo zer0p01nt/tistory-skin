@@ -691,6 +691,8 @@ blockquote {
 .contents_style table {
   border-collapse: collapse;
   width: 100%;
+  margin-top: 1rem !important;
+  margin-bottom: 1rem !important;
 }
 
 .contents_style table,
