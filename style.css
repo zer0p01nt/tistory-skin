@@ -706,6 +706,12 @@ h3 {
   font-weight: bold !important;
 }
 
+/* 본문 헤더 위아래 여백 */
+#tt-body-page .post-content :is(h1, h2, h3, h4, h5, h6) {
+  margin-top: 3rem !important;
+  margin-bottom: 1rem !important;
+}
+
 #tt-body-page h2[data-ke-size],
 #tt-body-page h3[data-ke-size],
 #tt-body-page h4[data-ke-size] {
