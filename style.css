@@ -582,7 +582,8 @@ body.is-top .toc-link {
   border-left-color: transparent !important;
 }
 
-body.is-top .toc-list-item:first-child > .toc-link {
+body.is-top .js-toc > .toc-list > .toc-list-item:first-child > .toc-link,
+body.is-top .js-toc-mobile > .toc-list > .toc-list-item:first-child > .toc-link {
   color: var(--primary) !important;
   font-weight: 600 !important;
   border-left-color: var(--primary) !important;
